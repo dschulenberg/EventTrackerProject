@@ -27,6 +27,7 @@ This is a built upon project with the first installation being the primary datab
 <p align="center">
 <img src="Images/delete.png" width="450">
 </p>
+
 ## Technologies
 * AWS- EC2
 * Git
