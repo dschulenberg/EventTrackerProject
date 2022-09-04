@@ -5,7 +5,7 @@ This is a built upon project with the first installation being the primary datab
 
 * Beginning Database Schema
 <p align="center">
-<img src="DB/budgeter.png" width="450">
+<img src="DB/budgeter.png" width="200">
 </p>
 * Find All Mapping
 <p align="center">
