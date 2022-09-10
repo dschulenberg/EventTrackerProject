@@ -20,6 +20,17 @@ public class Budget {
 	private int amount;
 	
 	private LocalDate date;
+	
+	private boolean variance;
+
+
+	public boolean isVariance() {
+		return variance;
+	}
+
+	public void setVariance(boolean variance) {
+		this.variance = variance;
+	}
 
 	public int getId() {
 		return id;
@@ -62,13 +73,16 @@ public class Budget {
 		this.date = date;
 	}
 
-	public Budget(int id, String category, String description, int amount, LocalDate date) {
+	
+
+	public Budget(int id, String category, String description, int amount, LocalDate date, boolean variance) {
 		super();
 		this.id = id;
 		this.category = category;
 		this.description = description;
 		this.amount = amount;
 		this.date = date;
+		this.variance = variance;
 	}
 
 	public Budget() {

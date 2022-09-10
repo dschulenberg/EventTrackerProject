@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Budgeter App</title>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</head>
+<body>
+ <h1>The page has loaded</h1>
+ <div id="tableBudget"></div><br>
+   <form name="addForm">
+    <input type="text" name="category" placeholder = "Expense Name"><br>
+    <input type="text" name="description" placeholder = "Description"><br>
+    <input type="number" name="amount" placeholder = "Amount"><br>
+    <input type="date" name="date" placeholder="Created Date"/><br>
+    <input type="hidden" value=false name="variance"/><br>
+    <button name="add">Add Budget</button>
+  </form>
+  <br>
+     <form name="updateForm">
+    <input type="number" name="id" placeholder = "Expense Id"><br>
+    <input type="text" name="category" placeholder = "Expense Name"><br>
+    <input type="text" name="description" placeholder = "Description"><br>
+    <input type="number" name="amount" placeholder = "Amount"><br>
+    <input type="date" name="date" placeholder="Created Date"/><br>
+    <input type="hidden" value= false name="variance"/><br>
+    <button name="update">Update Budget</button>
+  </form>
+    <br>
+     <form name="deleteForm">
+    <input type="number" name="id" placeholder = "Expense Id"><br>
+    <button name="delete">Delete Budget</button>
+  </form>
+</body>
+</html>

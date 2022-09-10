@@ -65,8 +65,10 @@ public class BudgetServiceImpl implements BudgetService {
 	                updated.setAmount(budget.getAmount());
 	            }
 	            if(budget.getDate() != null) {
-	                updated.setDate(budget.getDate());
+	            	updated.setDate(budget.getDate());
 	            }
+	            updated.setVariance(budget.isVariance());
+	            
 	            budgetRepo.saveAndFlush(updated);
 	        }
 	        return updated;
