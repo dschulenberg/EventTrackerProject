@@ -69,7 +69,41 @@ function adding(){
 	  addBudget(budget);
   });
 }
+function checkBalance(){
+	document.accountBalance.balance.addEventListener('click', function(event){
+	console.log('checking');
+	let xhr = new XMLHttpRequest();
+  xhr.open('GET', 'api/budgets');
 
+  xhr.onreadystatechange = ()=> {
+    if (xhr.readyState === 4){
+      if(xhr.status === 200){
+        let data = xhr.responseText;
+        let budgets = JSON.parse(data);
+        budgets.forEach(budget =>{
+		let positive = 0;
+		let negative = 0;
+		let sum = 0;
+		console.log(budget.variance);
+		if(budget.variance ===true){
+			positive += budget.amount;
+		} else if(budget.variance ===false){
+			negative += budget.amount;
+		}
+		sum = positive + negative;
+  let divContent = document.getElementById('account');
+  let division = document.createElement('div');
+  division.textContent = sum;
+  divContent.appendChild(division);
+	});
+      }else{
+        console.error('Filme not found:' + xhr.status);
+      }
+    }
+  };
+  xhr.send();
+	});
+}
 function loadAll(){
   let xhr = new XMLHttpRequest();
   xhr.open('GET', 'api/budgets');
@@ -80,7 +114,6 @@ function loadAll(){
         let data = xhr.responseText;
         let budgets = JSON.parse(data);
         displayBudgets(budgets);
-        
       }else{
         console.error('Filme not found:' + xhr.status);
       }
@@ -118,20 +151,7 @@ function displayBudgets(budgets){
     
     content.appendChild(table);
 }
-const cells = document.querySelectorAll('tr');
-for (var i = 0; i < cells.length; i++) {
-  console.log(cells[i].innerText);
-  cells[i].addEventListener('click', (event) => {
-    console.log(event.target.innerText); // Take the text node from the element who fire the click event.
 
-    // If you don't want to use innerText, you can do like this.
-        console.log(
-           //We transform querySelectorAll to traversable array. Then we find index of current event target.
-           Array.from(document.querySelectorAll('tr')).findIndex(e => e === event.target)
-        );
-
-  });
-}
 
 
 function addBudget(budget) {
