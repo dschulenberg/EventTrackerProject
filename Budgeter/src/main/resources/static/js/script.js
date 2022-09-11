@@ -8,6 +8,8 @@ function init(){
 	adding();
 	updating();
 	deleting();
+	checkBalance();
+	
 }
 function deleting(){
 	  document.deleteForm.delete.addEventListener('click', function(event){
@@ -31,11 +33,6 @@ function deleteBudget(budgetId){
       }
     }
   };
-  /*
-  xhr.setRequestHeader("Content-type","application/JSON");
-	let budgetJson = JSON.stringify(budget);
-  xhr.send(budgetJson);
-  */
   xhr.send();
 }
 function updating(){
@@ -71,6 +68,7 @@ function adding(){
 }
 function checkBalance(){
 	document.accountBalance.balance.addEventListener('click', function(event){
+	event.preventDefault();
 	console.log('checking');
 	let xhr = new XMLHttpRequest();
   xhr.open('GET', 'api/budgets');
@@ -80,24 +78,24 @@ function checkBalance(){
       if(xhr.status === 200){
         let data = xhr.responseText;
         let budgets = JSON.parse(data);
-        budgets.forEach(budget =>{
-		let positive = 0;
+        let positive = 0;
 		let negative = 0;
 		let sum = 0;
+        budgets.forEach(budget =>{
 		console.log(budget.variance);
 		if(budget.variance ===true){
 			positive += budget.amount;
 		} else if(budget.variance ===false){
 			negative += budget.amount;
 		}
-		sum = positive + negative;
+	});
+	sum = positive - negative;
   let divContent = document.getElementById('account');
   let division = document.createElement('div');
-  division.textContent = sum;
+  division.textContent = sum + ' dollars remaining in your account.';
   divContent.appendChild(division);
-	});
       }else{
-        console.error('Filme not found:' + xhr.status);
+        console.error('Filme not found:' + xhsr.status);
       }
     }
   };
