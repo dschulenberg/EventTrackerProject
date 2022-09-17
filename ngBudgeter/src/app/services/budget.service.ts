@@ -9,8 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root',
 })
 export class BudgetService {
-  private baseUrl = 'http://localhost:8083/';
-  private url = this.baseUrl + 'api/budgets';
+  private baseUrl = 'http://localhost:8083/api/budgets';
   constructor(private http: HttpClient) {}
 
   editBudget: Budget | null = null;

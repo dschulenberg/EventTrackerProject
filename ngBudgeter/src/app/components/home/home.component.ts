@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   constructor(private budgetService: BudgetService, private http: HttpClient) {}
-  private baseUrl = 'http://localhost:8083/api/budgets';
 
   title = 'Budgeter App';
 
