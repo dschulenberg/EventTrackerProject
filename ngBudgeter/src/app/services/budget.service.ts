@@ -4,12 +4,15 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BudgetService {
-  private baseUrl = 'http://localhost:8083/api/budgets';
+  // private baseUrl = 'http://localhost:8083/api/budgets';
+  private baseUrl = environment.baseUrl + 'api/budgets';
+
   constructor(private http: HttpClient) {}
 
   editBudget: Budget | null = null;
